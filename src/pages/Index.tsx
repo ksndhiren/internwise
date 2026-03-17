@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
+import HCaptcha from "@hcaptcha/react-hcaptcha";
 import { ArrowRight, ExternalLink, Check, Mail, MapPin, Globe, GraduationCap, Shield, Heart, CheckCircle } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -290,19 +291,30 @@ const AudienceSection = () => (
 /* ---------- Contact ---------- */
 const WEB3FORMS_KEY = "a0bbdc70-4da9-44a5-89ed-e317ed922a50";
 
+const HCAPTCHA_SITEKEY = "50b2fe65-b00b-4b9e-ad62-3ba471098be2";
+
 const ContactSection = () => {
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
   const [error, setError] = useState("");
+  const [captchaToken, setCaptchaToken] = useState("");
+  const captchaRef = useRef<HCaptcha | null>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!captchaToken) {
+      setError("Please complete the captcha verification.");
+      return;
+    }
+
     setSending(true);
     setError("");
 
     const formData = new FormData(e.currentTarget);
     formData.append("access_key", WEB3FORMS_KEY);
     formData.append("from_name", "Internwise Contact Form");
+    formData.append("h-captcha-response", captchaToken);
 
     try {
       const res = await fetch("https://api.web3forms.com/submit", {
@@ -315,9 +327,13 @@ const ContactSection = () => {
         setSubmitted(true);
       } else {
         setError("Something went wrong. Please try again.");
+        captchaRef.current?.resetCaptcha();
+        setCaptchaToken("");
       }
     } catch {
       setError("Network error. Please check your connection and try again.");
+      captchaRef.current?.resetCaptcha();
+      setCaptchaToken("");
     } finally {
       setSending(false);
     }
@@ -391,8 +407,17 @@ const ContactSection = () => {
                   <label className="block text-sm font-medium font-body text-foreground/70 mb-1.5">Message</label>
                   <textarea name="message" required rows={4} className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm font-body focus:outline-none focus:ring-2 focus:ring-sky/50 resize-none" />
                 </div>
+                <div>
+                  <HCaptcha
+                    sitekey={HCAPTCHA_SITEKEY}
+                    reCaptchaCompat={false}
+                    onVerify={(token) => setCaptchaToken(token)}
+                    onExpire={() => setCaptchaToken("")}
+                    ref={captchaRef}
+                  />
+                </div>
                 {error && <p className="text-red-500 text-sm font-body">{error}</p>}
-                <Button variant="coral" size="lg" type="submit" className="w-full" disabled={sending}>
+                <Button variant="coral" size="lg" type="submit" className="w-full" disabled={sending || !captchaToken}>
                   {sending ? "Sending..." : "Send Message"}
                 </Button>
               </form>
