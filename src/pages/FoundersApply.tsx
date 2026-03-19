@@ -281,7 +281,7 @@ const FoundersApply = () => {
                   We are looking for founders who don't just want to start a business, but want to solve real problems responsibly.
                 </p>
                 <p>
-                  We'll review your application and get back to you within <span className="font-semibold text-navy">5 working days</span> regarding a 15-minute chemistry call.
+                  We'll review your <em>'short'</em> application and get back to you within <span className="font-semibold text-navy">5 working days</span> regarding a 15-minute chemistry call.
                 </p>
               </div>
               <Link to="/founders-program">
@@ -430,14 +430,12 @@ const FoundersApply = () => {
                       </div>
                     </div>
                     <div>
-                      <div className="flex items-end justify-between mb-1.5">
-                        <FieldLabel>The "Why": Why are you choosing to build a business now instead of following a traditional career path?</FieldLabel>
-                      </div>
+                      <FieldLabel>Why are you choosing to build a business now instead of following a traditional career path?</FieldLabel>
                       <textarea className={textareaClass} rows={4} value={whyNow} onChange={(e) => setWhyNow(e.target.value)} placeholder="What drives you to build rather than follow a conventional path?" required />
                       <WordCounter text={whyNow} max={150} />
                     </div>
                     <div>
-                      <FieldLabel>Resilience Check: Describe a time you built something from scratch or solved a difficult problem with limited resources.</FieldLabel>
+                      <FieldLabel>Describe a time you built something from scratch or solved a difficult problem with limited resources.</FieldLabel>
                       <textarea className={textareaClass} rows={4} value={resilience} onChange={(e) => setResilience(e.target.value)} placeholder="Tell us about a time you showed resourcefulness and determination..." required />
                       <WordCounter text={resilience} max={150} />
                     </div>
@@ -448,20 +446,20 @@ const FoundersApply = () => {
                 {step === 2 && (
                   <div className="space-y-5">
                     <div>
-                      <FieldLabel>The One-Sentence Pitch: What does your business do, and for whom?</FieldLabel>
+                      <FieldLabel>Describe your business. What does your business do, and for whom?</FieldLabel>
                       <input className={inputClass} value={oneLiner} onChange={(e) => setOneLiner(e.target.value)} placeholder='e.g. "We are building [Product] to help [Audience] solve [Problem]."' required />
                       <p className="text-xs text-foreground/40 font-body mt-1">Example: "We are building [Product] to help [Audience] solve [Problem]."</p>
                     </div>
                     <div>
-                      <FieldLabel>The Problem: What is the specific pain point you've identified? How do people solve this problem today?</FieldLabel>
+                      <FieldLabel>What is the specific "pain point" you've identified? How do people solve this problem today?</FieldLabel>
                       <textarea className={textareaClass} rows={4} value={problem} onChange={(e) => setProblem(e.target.value)} placeholder="Describe the specific pain point and current solutions..." required />
                     </div>
                     <div>
-                      <FieldLabel>The Solution: Describe your product or service. How is it better or different from what currently exists?</FieldLabel>
+                      <FieldLabel>Describe your product or service. How is it better or different from what currently exists?</FieldLabel>
                       <textarea className={textareaClass} rows={4} value={solution} onChange={(e) => setSolution(e.target.value)} placeholder="What are you building and what makes it unique?" required />
                     </div>
                     <div>
-                      <FieldLabel>Target Market: Who is your first paying customer?</FieldLabel>
+                      <FieldLabel>Who is your first "paying customer"?</FieldLabel>
                       <textarea className={textareaClass} rows={3} value={targetMarket} onChange={(e) => setTargetMarket(e.target.value)} placeholder='Be specific, e.g., "SMEs in the UK fashion sector," not just "everyone."' required />
                       <p className="text-xs text-foreground/40 font-body mt-1">Be specific — e.g., "SMEs in the UK fashion sector," not just "everyone."</p>
                     </div>
@@ -490,7 +488,7 @@ const FoundersApply = () => {
                       <p className="text-xs text-foreground/40 font-body mt-1">E.g. users, revenue, growth metrics, partnerships, LOIs, waitlist</p>
                     </div>
                     <div>
-                      <FieldLabel>Evidence of Interest: Have you spoken to potential customers? If so, what is the #1 thing they told you?</FieldLabel>
+                      <FieldLabel>Have you spoken to potential customers? If so, what is the #1 thing they told you?</FieldLabel>
                       <textarea className={textareaClass} rows={3} value={customerFeedback} onChange={(e) => setCustomerFeedback(e.target.value)} placeholder="What did potential customers say?" required />
                     </div>
                     <div>
