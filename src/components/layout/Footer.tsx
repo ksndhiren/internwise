@@ -43,7 +43,7 @@ function Footer() {
             <h4 className="text-white font-semibold text-sm mb-4">Group</h4>
             <ul className="space-y-2 text-sm">
               <li><button onClick={() => handleScrollLink("#about")} className="hover:text-white transition-colors">About Us</button></li>
-              <li><Link to="/founders" className="hover:text-white transition-colors">Founder Partnership</Link></li>
+              <li><Link to="/founders-program" className="hover:text-white transition-colors">Founder Partnership</Link></li>
               <li><Link to="/blog" className="hover:text-white transition-colors">Blog</Link></li>
               <li><button onClick={() => handleScrollLink("#contact")} className="hover:text-white transition-colors">Contact</button></li>
             </ul>

@@ -45,7 +45,7 @@ const FoundersNavbar = () => {
               <img
                 src="/logo-horizontal.png"
                 alt="Internwise"
-                className={`h-7 transition-all duration-300 ${scrolled ? "" : "brightness-0 invert"}`}
+                className={`h-10 transition-all duration-300 ${scrolled ? "" : "brightness-0 invert"}`}
               />
             </Link>
             <span className={`hidden sm:inline text-sm font-semibold font-body ${scrolled ? "text-coral" : "text-coral"}`}>
@@ -75,7 +75,7 @@ const FoundersNavbar = () => {
                   : "text-white/80 hover:text-white hover:bg-white/10"
               }`}
             >
-              Internwise Home
+              Home
             </Link>
           </div>
 
@@ -107,7 +107,7 @@ const FoundersNavbar = () => {
               </button>
             ))}
             <Link to="/" className="block px-4 py-3 text-sm font-medium font-body text-navy/70 hover:text-navy hover:bg-navy/5 rounded-xl">
-              Internwise Home
+              Home
             </Link>
             <div className="pt-2">
               <button onClick={() => handleAnchorClick("#apply")} className="w-full">

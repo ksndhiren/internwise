@@ -1,7 +1,7 @@
-import { useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
-import { ArrowRight, ExternalLink, Check, Mail, MapPin, Globe, GraduationCap, Shield, Heart, CheckCircle } from "lucide-react";
+import { ArrowRight, ExternalLink, Check, Mail, MapPin, Globe, GraduationCap, Shield, Heart, CheckCircle, Phone, ChevronDown } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Container from "@/components/shared/Container";
@@ -189,7 +189,7 @@ const PlatformsSection = () => (
         </div>
 
         {/* Founders */}
-        <Link to="/founders" className="block bg-gradient-to-br from-coral to-coral-dark rounded-2xl p-8 text-white hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
+        <Link to="/founders-program" className="block bg-gradient-to-br from-coral to-coral-dark rounded-2xl p-8 text-white hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
           <span className="text-3xl mb-4 block">🚀</span>
           <h3 className="font-display text-2xl font-bold mb-3">Founder Partnership</h3>
           <p className="text-white/80 text-sm font-body mb-6">A structured programme backing ambitious graduates to build profitable, responsible businesses from day one.</p>
@@ -291,6 +291,62 @@ const AudienceSection = () => (
 /* ---------- Contact ---------- */
 const WEB3FORMS_KEY = "a0bbdc70-4da9-44a5-89ed-e317ed922a50";
 
+const PHONE_CODES = [
+  { code: "+44", country: "UK", flag: "https://flagcdn.com/w40/gb.png" },
+  { code: "+1", country: "US", flag: "https://flagcdn.com/w40/us.png" },
+  { code: "+353", country: "IE", flag: "https://flagcdn.com/w40/ie.png" },
+  { code: "+33", country: "FR", flag: "https://flagcdn.com/w40/fr.png" },
+  { code: "+49", country: "DE", flag: "https://flagcdn.com/w40/de.png" },
+  { code: "+34", country: "ES", flag: "https://flagcdn.com/w40/es.png" },
+  { code: "+39", country: "IT", flag: "https://flagcdn.com/w40/it.png" },
+  { code: "+31", country: "NL", flag: "https://flagcdn.com/w40/nl.png" },
+  { code: "+91", country: "IN", flag: "https://flagcdn.com/w40/in.png" },
+];
+
+const PhoneExtSelect = ({ value, onChange }: { value: string; onChange: (v: string) => void }) => {
+  const [open, setOpen] = useState(false);
+  const selected = PHONE_CODES.find((p) => p.code === value) || PHONE_CODES[0];
+  const ref = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, []);
+
+  return (
+    <div ref={ref} className="relative">
+      <button
+        type="button"
+        onClick={() => setOpen(!open)}
+        className="flex items-center gap-1.5 w-[6.5rem] rounded-xl border border-border bg-background px-2.5 py-2.5 text-sm font-body focus:outline-none focus:ring-2 focus:ring-sky/50"
+      >
+        <img src={selected.flag} alt={selected.country} className="w-5 h-3.5 object-cover rounded-[2px]" />
+        <span>{selected.code}</span>
+        <ChevronDown size={14} className="ml-auto text-foreground/40" />
+      </button>
+      {open && (
+        <div className="absolute top-full left-0 mt-1 w-[6.5rem] bg-background border border-border rounded-xl shadow-lg z-50 py-1 max-h-48 overflow-y-auto">
+          {PHONE_CODES.map((p) => (
+            <button
+              key={p.code}
+              type="button"
+              onClick={() => { onChange(p.code); setOpen(false); }}
+              className={`flex items-center gap-1.5 w-full px-2.5 py-2 text-sm font-body hover:bg-sky/10 transition-colors ${p.code === value ? "bg-sky/5 font-medium" : ""}`}
+            >
+              <img src={p.flag} alt={p.country} className="w-5 h-3.5 object-cover rounded-[2px]" />
+              <span>{p.code}</span>
+            </button>
+          ))}
+        </div>
+      )}
+      <input type="hidden" name="phone_ext" value={value} />
+    </div>
+  );
+};
+
 const HCAPTCHA_SITEKEY = "50b2fe65-b00b-4b9e-ad62-3ba471098be2";
 
 const ContactSection = () => {
@@ -298,6 +354,7 @@ const ContactSection = () => {
   const [sending, setSending] = useState(false);
   const [error, setError] = useState("");
   const [captchaToken, setCaptchaToken] = useState("");
+  const [phoneExt, setPhoneExt] = useState("+44");
   const captchaRef = useRef<HCaptcha | null>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -381,20 +438,27 @@ const ContactSection = () => {
                 <p className="text-foreground/60 font-body">Thank you for getting in touch. We will respond as soon as possible.</p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <input type="hidden" name="subject" value="New Contact Form Submission - Internwise" />
                 <input type="checkbox" name="botcheck" className="hidden" />
                 <div>
-                  <label className="block text-sm font-medium font-body text-foreground/70 mb-1.5">Name</label>
-                  <input type="text" name="name" required className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm font-body focus:outline-none focus:ring-2 focus:ring-sky/50" />
+                  <label className="block text-sm font-medium font-body text-foreground/70 mb-1">Name</label>
+                  <input type="text" name="name" required className="w-full rounded-xl border border-border bg-background px-4 py-2.5 text-sm font-body focus:outline-none focus:ring-2 focus:ring-sky/50" />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium font-body text-foreground/70 mb-1.5">Email</label>
-                  <input type="email" name="email" required className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm font-body focus:outline-none focus:ring-2 focus:ring-sky/50" />
+                  <label className="block text-sm font-medium font-body text-foreground/70 mb-1">Email</label>
+                  <input type="email" name="email" required className="w-full rounded-xl border border-border bg-background px-4 py-2.5 text-sm font-body focus:outline-none focus:ring-2 focus:ring-sky/50" />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium font-body text-foreground/70 mb-1.5">Subject</label>
-                  <select name="subject" required className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm font-body focus:outline-none focus:ring-2 focus:ring-sky/50">
+                  <label className="block text-sm font-medium font-body text-foreground/70 mb-1">Phone</label>
+                  <div className="flex gap-2">
+                    <PhoneExtSelect value={phoneExt} onChange={setPhoneExt} />
+                    <input type="tel" name="phone" className="flex-1 rounded-xl border border-border bg-background px-4 py-2.5 text-sm font-body focus:outline-none focus:ring-2 focus:ring-sky/50" placeholder="Phone number" />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium font-body text-foreground/70 mb-1">Subject</label>
+                  <select name="subject" required className="w-full rounded-xl border border-border bg-background px-4 py-2.5 text-sm font-body focus:outline-none focus:ring-2 focus:ring-sky/50">
                     <option value="">Select a subject</option>
                     <option>General Enquiry</option>
                     <option>Employer Partnership</option>
@@ -404,8 +468,8 @@ const ContactSection = () => {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium font-body text-foreground/70 mb-1.5">Message</label>
-                  <textarea name="message" required rows={4} className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm font-body focus:outline-none focus:ring-2 focus:ring-sky/50 resize-none" />
+                  <label className="block text-sm font-medium font-body text-foreground/70 mb-1">Message</label>
+                  <textarea name="message" required rows={3} className="w-full rounded-xl border border-border bg-background px-4 py-2.5 text-sm font-body focus:outline-none focus:ring-2 focus:ring-sky/50 resize-none" />
                 </div>
                 <div>
                   <HCaptcha

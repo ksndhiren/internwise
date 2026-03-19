@@ -9,6 +9,7 @@ import BlogPost from "./pages/BlogPost";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import NotFound from "./pages/NotFound";
+import FoundersApply from "./pages/FoundersApply";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
@@ -30,7 +31,8 @@ const App = () => (
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/founders" element={<Founders />} />
+          <Route path="/founders-program" element={<Founders />} />
+          <Route path="/founders-program/apply" element={<FoundersApply />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/privacy" element={<Privacy />} />

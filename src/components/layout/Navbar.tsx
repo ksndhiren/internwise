@@ -57,7 +57,7 @@ const Navbar = () => {
             <img
               src="/logo-horizontal.png"
               alt="Internwise"
-              className={`h-8 transition-all duration-300 ${
+              className={`h-10 transition-all duration-300 ${
                 scrolled ? "" : "brightness-0 invert"
               }`}
             />
@@ -79,7 +79,7 @@ const Navbar = () => {
               </button>
             ))}
             <Link
-              to="/founders"
+              to="/founders-program"
               className={`px-4 py-2 text-sm font-medium font-body rounded-full transition-colors ${
                 scrolled
                   ? "text-coral hover:bg-coral/5"
@@ -130,7 +130,7 @@ const Navbar = () => {
               </button>
             ))}
             <Link
-              to="/founders"
+              to="/founders-program"
               className="block px-4 py-3 text-sm font-medium font-body text-coral hover:bg-coral/5 rounded-xl"
             >
               ✨ Founder Partnership

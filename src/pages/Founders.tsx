@@ -47,11 +47,11 @@ const FoundersHero = () => (
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
-          <button onClick={() => document.querySelector("#apply")?.scrollIntoView({ behavior: "smooth" })}>
+          <Link to="/founders-program/apply">
             <Button variant="coral" size="xl">
               Start Your Application <ArrowRight size={18} />
             </Button>
-          </button>
+          </Link>
           <button onClick={() => document.querySelector("#about")?.scrollIntoView({ behavior: "smooth" })}>
             <Button variant="ghost-hero" size="xl">Learn More</Button>
           </button>
@@ -99,8 +99,8 @@ const WhatThisIsSection = () => (
           <ul className="space-y-4">
             {thisIs.map((item) => (
               <li key={item} className="flex items-start gap-3 text-white/80 font-body text-sm">
-                <div className="w-6 h-6 rounded-full bg-sky/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <Check size={14} className="text-sky" />
+                <div className="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <Check size={14} className="text-green-400" />
                 </div>
                 {item}
               </li>
@@ -112,8 +112,8 @@ const WhatThisIsSection = () => (
           <ul className="space-y-4">
             {thisIsnt.map((item) => (
               <li key={item} className="flex items-start gap-3 text-foreground/70 font-body text-sm">
-                <div className="w-6 h-6 rounded-full bg-foreground/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <X size={14} className="text-foreground/40" />
+                <div className="w-6 h-6 rounded-full bg-red-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <X size={14} className="text-red-500" />
                 </div>
                 {item}
               </li>
@@ -330,6 +330,7 @@ const sectors = [
   "Technology & Digital", "Social Impact", "Education", "Health & Wellbeing",
   "Sustainability", "Creative Industries", "Professional Services",
   "E-commerce & Retail", "Community & Society", "Food & Hospitality",
+  "Fashion & Luxury",
 ];
 
 const ProfitWithPurposeSection = () => (
@@ -491,11 +492,11 @@ const FinalCTASection = () => (
           <p className="text-white/60 font-body max-w-xl mx-auto mb-8">
             If you have the idea and the drive, we have the structure, mentorship, and resources to help you make it happen.
           </p>
-          <a href="mailto:help@internwise.co.uk?subject=Founder Partnership Application">
+          <Link to="/founders-program/apply">
             <Button variant="coral" size="xl">
               Start Your Application <ArrowRight size={18} />
             </Button>
-          </a>
+          </Link>
         </div>
       </div>
     </Container>
