@@ -171,7 +171,7 @@ const youBring = [
 const WhatYouBringSection = () => (
   <section className="py-24 lg:py-32 bg-background">
     <Container>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
         <div>
           <SectionLabel>Your Part</SectionLabel>
           <SectionHeading className="mt-4 mb-6">What You Bring to the Table</SectionHeading>
@@ -340,7 +340,7 @@ const ProfitWithPurposeSection = () => (
         <SectionLabel>Our Philosophy</SectionLabel>
         <SectionHeading className="mt-4">Profit with Purpose</SectionHeading>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
         <div className="space-y-5 font-body text-foreground/70 leading-relaxed">
           <p>We believe that the best businesses are built with purpose at their core. Making money and making a difference are not mutually exclusive. In fact, we think they are inseparable.</p>
           <p>The Founder Partnership is designed around this principle. We back founders who want to build businesses that are financially sustainable and socially responsible. Businesses that create value for their customers, their communities, and the people who work in them.</p>
@@ -476,7 +476,7 @@ const FAQSection = () => {
 const FinalCTASection = () => (
   <section id="apply" className="py-24 lg:py-32 bg-background">
     <Container>
-      <div className="relative bg-gradient-to-br from-navy via-navy-mid to-navy-dark rounded-3xl p-12 lg:p-20 text-center overflow-hidden">
+      <div className="relative bg-gradient-to-br from-navy via-navy-mid to-navy-dark rounded-3xl p-6 sm:p-12 lg:p-20 text-center overflow-hidden">
         <DotGrid />
         <BlobDecoration color="sky" className="w-72 h-72 -top-20 -right-20 animation-delay-2000" />
         <BlobDecoration color="coral" className="w-60 h-60 -bottom-20 -left-20" />

@@ -13,8 +13,8 @@ function Footer() {
 
   return (
     <footer className="bg-navy-darker text-white/70 font-body">
-      <Container className="py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <Container className="py-10 md:py-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10">
           {/* Brand */}
           <div>
             <img
@@ -46,15 +46,6 @@ function Footer() {
               <li><Link to="/founders-program" className="hover:text-white transition-colors">Founder Partnership</Link></li>
               <li><Link to="/blog" className="hover:text-white transition-colors">Blog</Link></li>
               <li><button onClick={() => handleScrollLink("#contact")} className="hover:text-white transition-colors">Contact</button></li>
-            </ul>
-          </div>
-
-          {/* Legal */}
-          <div>
-            <h4 className="text-white font-semibold text-sm mb-4">Legal</h4>
-            <ul className="space-y-2 text-sm">
-              <li><Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
-              <li><Link to="/terms" className="hover:text-white transition-colors">Terms & Conditions</Link></li>
             </ul>
           </div>
         </div>

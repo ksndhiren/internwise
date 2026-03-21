@@ -263,7 +263,7 @@ const FoundersApply = () => {
   if (submitted) {
     return (
       <>
-        <FoundersNavbar />
+        <FoundersNavbar forceScrolled />
         <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white pt-32 pb-20">
           <Container>
             <div className="max-w-2xl mx-auto text-center">
@@ -299,7 +299,7 @@ const FoundersApply = () => {
 
   return (
     <>
-      <FoundersNavbar />
+      <FoundersNavbar forceScrolled />
       <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white pt-28 pb-20">
         <Container>
           <div className="max-w-3xl mx-auto">
@@ -356,7 +356,7 @@ const FoundersApply = () => {
 
             {/* Form Card */}
             <form ref={formRef} onSubmit={(e) => e.preventDefault()}>
-              <div className="bg-white rounded-2xl border border-border shadow-sm p-8 sm:p-10">
+              <div className="bg-white rounded-2xl border border-border shadow-sm p-5 sm:p-8 md:p-10">
                 {/* Section Header */}
                 <div className="mb-8 pb-6 border-b border-border">
                   <p className="text-xs font-body font-semibold text-coral uppercase tracking-wider mb-1">
@@ -447,8 +447,7 @@ const FoundersApply = () => {
                   <div className="space-y-5">
                     <div>
                       <FieldLabel>Describe your business. What does your business do, and for whom?</FieldLabel>
-                      <input className={inputClass} value={oneLiner} onChange={(e) => setOneLiner(e.target.value)} placeholder='e.g. "We are building [Product] to help [Audience] solve [Problem]."' required />
-                      <p className="text-xs text-foreground/40 font-body mt-1">Example: "We are building [Product] to help [Audience] solve [Problem]."</p>
+                      <textarea className={textareaClass} rows={4} value={oneLiner} onChange={(e) => setOneLiner(e.target.value)} placeholder='e.g. "We are building [Product] to help [Audience] solve [Problem]."' required />
                     </div>
                     <div>
                       <FieldLabel>What is the specific "pain point" you've identified? How do people solve this problem today?</FieldLabel>
@@ -461,7 +460,6 @@ const FoundersApply = () => {
                     <div>
                       <FieldLabel>Who is your first "paying customer"?</FieldLabel>
                       <textarea className={textareaClass} rows={3} value={targetMarket} onChange={(e) => setTargetMarket(e.target.value)} placeholder='Be specific, e.g., "SMEs in the UK fashion sector," not just "everyone."' required />
-                      <p className="text-xs text-foreground/40 font-body mt-1">Be specific — e.g., "SMEs in the UK fashion sector," not just "everyone."</p>
                     </div>
                   </div>
                 )}
@@ -485,7 +483,6 @@ const FoundersApply = () => {
                     <div>
                       <FieldLabel>What traction do you currently have?</FieldLabel>
                       <textarea className={textareaClass} rows={3} value={traction} onChange={(e) => setTraction(e.target.value)} placeholder="Users, revenue, growth metrics, partnerships, LOIs, waitlist..." required />
-                      <p className="text-xs text-foreground/40 font-body mt-1">E.g. users, revenue, growth metrics, partnerships, LOIs, waitlist</p>
                     </div>
                     <div>
                       <FieldLabel>Have you spoken to potential customers? If so, what is the #1 thing they told you?</FieldLabel>
@@ -499,15 +496,13 @@ const FoundersApply = () => {
                       <FieldLabel required={false}>Do you have a product, website or prototype? (Link)</FieldLabel>
                       <input type="url" className={inputClass} value={productLink} onChange={(e) => setProductLink(e.target.value)} placeholder="https://..." />
                     </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                      <div>
-                        <FieldLabel>What is your 12-month vision for this business?</FieldLabel>
-                        <textarea className={textareaClass} rows={3} value={vision12} onChange={(e) => setVision12(e.target.value)} placeholder="Where do you see this in 1 year?" required />
-                      </div>
-                      <div>
-                        <FieldLabel>What is your long-term ambition (3–5 years)?</FieldLabel>
-                        <textarea className={textareaClass} rows={3} value={vision35} onChange={(e) => setVision35(e.target.value)} placeholder="Where could this go in 3-5 years?" required />
-                      </div>
+                    <div>
+                      <FieldLabel>What is your 12-month vision for this business?</FieldLabel>
+                      <textarea className={textareaClass} rows={3} value={vision12} onChange={(e) => setVision12(e.target.value)} placeholder="Where do you see this in 1 year?" required />
+                    </div>
+                    <div>
+                      <FieldLabel>What is your long-term ambition (3–5 years)?</FieldLabel>
+                      <textarea className={textareaClass} rows={3} value={vision35} onChange={(e) => setVision35(e.target.value)} placeholder="Where could this go in 3-5 years?" required />
                     </div>
                     <div>
                       <FieldLabel>What makes this business commercially viable?</FieldLabel>

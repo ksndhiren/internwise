@@ -80,7 +80,7 @@ const Blog = () => {
         <section className="pb-24 bg-background">
           <Container>
             <h3 className="font-display text-xl font-bold text-navy mb-8">More Articles</h3>
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {rest.map((article) => (
                 <Link
                   key={article.slug}

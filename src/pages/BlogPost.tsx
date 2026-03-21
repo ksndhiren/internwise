@@ -51,7 +51,7 @@ const BlogPost = () => {
 
       {/* Article card */}
       <Container className="relative z-10 -mt-16 pb-24">
-        <article className="max-w-3xl mx-auto bg-background rounded-2xl shadow-xl p-8 lg:p-12">
+        <article className="max-w-3xl mx-auto bg-background rounded-2xl shadow-xl p-5 sm:p-8 lg:p-12">
           <Link
             to="/blog"
             className="inline-flex items-center gap-2 text-sm font-body text-foreground/50 hover:text-navy transition-colors mb-6"

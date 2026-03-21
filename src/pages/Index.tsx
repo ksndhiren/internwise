@@ -20,7 +20,7 @@ const HeroSection = () => (
     <BlobDecoration color="sky" className="w-72 h-72 bottom-32 right-10" />
     <BlobDecoration color="coral" className="w-80 h-80 top-1/3 right-1/4 animation-delay-4000" />
 
-    <Container className="relative z-10 text-center py-20 lg:py-24">
+    <Container className="relative z-10 text-center pt-20 pb-12 md:py-20 lg:py-24">
       <div className="animate-fade-in-up max-w-4xl mx-auto">
         {/* Eyebrow badge */}
         <div className="inline-flex items-center gap-2 bg-white/10 border border-white/10 backdrop-blur-sm rounded-full px-5 py-2 mb-6">
@@ -79,7 +79,7 @@ const stats = [
 const MissionSection = () => (
   <section id="mission" className="py-24 lg:py-32 bg-background">
     <Container>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 mb-12 lg:mb-20">
         <div>
           <SectionLabel>Why We Exist</SectionLabel>
           <SectionHeading className="mt-4 mb-6">
@@ -94,7 +94,7 @@ const MissionSection = () => (
         </div>
       </div>
 
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {stats.map((stat) => (
           <div
             key={stat.label}
@@ -128,7 +128,7 @@ const AboutSection = () => (
     <BlobDecoration color="coral" className="w-72 h-72 bottom-10 left-10 animation-delay-2000" />
 
     <Container className="relative z-10">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 mb-12 lg:mb-20">
         <div>
           <SectionLabel>About Us</SectionLabel>
           <SectionHeading light className="mt-4 mb-6">
@@ -402,7 +402,7 @@ const ContactSection = () => {
       <BlobDecoration color="sky" className="w-96 h-96 top-10 right-0" />
 
       <Container className="relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
           <div>
             <SectionLabel>Get in Touch</SectionLabel>
             <SectionHeading light className="mt-4 mb-8">

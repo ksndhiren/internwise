@@ -22,7 +22,7 @@ export const blogArticles: BlogArticle[] = [
     date: "10 March 2026",
     readTime: "8 min",
     excerpt: "Charity internships allow people to gain work experience while supporting causes they care about within groups focused on positive global impact. Here is everything you need to know.",
-    image: "./blog-charity-internships.jpg",
+    image: "/blog-charity-internships.jpg",
     imageAlt: "Illustration representing charity internships in the UK nonprofit sector",
     content: `<h2>What is a Charity Internship?</h2>
 <p>Charity internships, also called nonprofit internships or philanthropic internships, are positions offered by charitable organisations or schools that don't generate profit. These opportunities allow people to gain work experience while supporting causes they care about within groups focused on positive global impact. Many organisations and charities provide internships and graduate schemes for candidates passionate about helping others with flexible working arrangements.</p>
@@ -83,7 +83,7 @@ export const blogArticles: BlogArticle[] = [
     date: "5 March 2026",
     readTime: "9 min",
     excerpt: "Internships in the field of consulting are structured work placements designed to give students practical experience. Here is your complete guide to landing and succeeding in a consulting internship.",
-    image: "./blog-consulting-internships.jpg",
+    image: "/blog-consulting-internships.jpg",
     imageAlt: "Illustration representing consulting internships and professional development",
     content: `<h2>What is a Consulting Internship?</h2>
 <p>Internships in the field of consulting are structured work placements designed to give students practical experience in the field. An intern works for a period of time ranging from three months to a year, joining an existing team and performing responsibilities as assigned. A consulting internship includes:</p>
@@ -141,7 +141,7 @@ export const blogArticles: BlogArticle[] = [
     date: "28 February 2026",
     readTime: "7 min",
     excerpt: "Internships in business management provide practical experience where responsibilities expand as you progress. Here are essential tips for succeeding in this competitive field.",
-    image: "./blog-business-management.png",
+    image: "/blog-business-management.png",
     imageAlt: "Illustration representing business management internships and career growth",
     content: `<h2>Internship Opportunities in Business Management</h2>
 <p>Internships provide practical experience where responsibilities expand as you progress. Career paths may evolve from administrative assistant roles to consultant and vice president positions. If you're interested in a career in business management, mapping out your next steps early can help you plot a clear trajectory toward your goals.</p>
@@ -204,7 +204,7 @@ export const blogArticles: BlogArticle[] = [
     date: "20 February 2026",
     readTime: "10 min",
     excerpt: "Architecture internships give young professionals the chance to gain experience, develop their skills, and create real differences in the built environment. Here is your complete guide.",
-    image: "./blog-architecture-internships.jpg",
+    image: "/blog-architecture-internships.jpg",
     imageAlt: "Illustration representing architecture internships and design careers",
     content: `<h2>Types of Architecture Internships</h2>
 <p>Architecture internships come in several specialisations, each offering unique experiences and learning opportunities:</p>

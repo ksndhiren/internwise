@@ -11,16 +11,17 @@ const navLinks = [
   { label: "FAQs", href: "#faq" },
 ];
 
-const FoundersNavbar = () => {
-  const [scrolled, setScrolled] = useState(false);
+const FoundersNavbar = ({ forceScrolled = false }: { forceScrolled?: boolean }) => {
+  const [scrolled, setScrolled] = useState(forceScrolled);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
+    if (forceScrolled) { setScrolled(true); return; }
     const handler = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handler);
     return () => window.removeEventListener("scroll", handler);
-  }, []);
+  }, [forceScrolled]);
 
   useEffect(() => {
     setMobileOpen(false);
@@ -54,6 +55,16 @@ const FoundersNavbar = () => {
           </div>
 
           <div className="hidden lg:flex items-center gap-1">
+            <Link
+              to="/"
+              className={`px-4 py-2 text-sm font-medium font-body rounded-full transition-colors ${
+                scrolled
+                  ? "text-navy/70 hover:text-navy hover:bg-navy/5"
+                  : "text-white/80 hover:text-white hover:bg-white/10"
+              }`}
+            >
+              Home
+            </Link>
             {navLinks.map((link) => (
               <button
                 key={link.label}
@@ -67,16 +78,6 @@ const FoundersNavbar = () => {
                 {link.label}
               </button>
             ))}
-            <Link
-              to="/"
-              className={`px-4 py-2 text-sm font-medium font-body rounded-full transition-colors ${
-                scrolled
-                  ? "text-navy/70 hover:text-navy hover:bg-navy/5"
-                  : "text-white/80 hover:text-white hover:bg-white/10"
-              }`}
-            >
-              Home
-            </Link>
           </div>
 
           <div className="hidden lg:block">
@@ -97,6 +98,9 @@ const FoundersNavbar = () => {
       {mobileOpen && (
         <div className="lg:hidden bg-background border-t border-border shadow-xl">
           <Container className="py-4 space-y-2">
+            <Link to="/" className="block px-4 py-3 text-sm font-medium font-body text-navy/70 hover:text-navy hover:bg-navy/5 rounded-xl">
+              Home
+            </Link>
             {navLinks.map((link) => (
               <button
                 key={link.label}
@@ -106,9 +110,6 @@ const FoundersNavbar = () => {
                 {link.label}
               </button>
             ))}
-            <Link to="/" className="block px-4 py-3 text-sm font-medium font-body text-navy/70 hover:text-navy hover:bg-navy/5 rounded-xl">
-              Home
-            </Link>
             <div className="pt-2">
               <button onClick={() => handleAnchorClick("#apply")} className="w-full">
                 <Button variant="coral" size="default" className="w-full">Apply Now</Button>
